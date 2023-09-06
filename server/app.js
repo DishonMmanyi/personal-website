@@ -4,7 +4,7 @@ const app = express(); //making express application
 const port = process.env.PORT ||3000; // port number server will run in
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 // Serve static files from the 'client folder
 app.use(express.static(path.join(__dirname, '../client')));
@@ -30,11 +30,8 @@ app.get('*', (req, res) => {
 
   //http endpoint to handle email sending functionality
 app.post('/send-email', (req, res) => {
-    console.log('Received request with body:', req.body);
 const { name, email, number, subject, message } = req.body;
-console.log("Entering /send-email endpoint");
-console.log(`user from env variable ${process.env.SMTP_USER}`);
-console.log(`Name: ${name} Email: ${email} Number: ${number} `);
+
 
 const mailOptions = {
     from: process.env.SMTP_USER,

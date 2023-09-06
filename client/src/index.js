@@ -51,19 +51,16 @@ window.onscroll = () => {
 
 const contactForm = document.getElementById('contact-form');
 const submitButton = document.getElementById('submit-button');
+const loaderIcon = document.getElementById('loading-container');
 
     //form submission handler
     document.getElementById('contact-form').addEventListener('submit', (e) => {
         e.preventDefault();
-
+        loaderIcon.style.display = 'block';
         // Disable the submit button to prevent multiple submissions
         submitButton.disabled = true;
 
         const formData = new FormData(e.target);
-
-        for (const [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
 
         fetch('/send-email', {
           method: 'POST',
@@ -74,6 +71,7 @@ const submitButton = document.getElementById('submit-button');
         })
           .then((response) => response.text())
           .then((data) => {
+            loaderIcon.style.display = 'none';
             const successModal = document.getElementById('successModal');
             successModal.style.display = 'block';
             contactForm.reset();

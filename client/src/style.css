@@ -772,6 +772,36 @@ section:nth-child(odd) .animate.scroll,
     color: var(--second-bg-color);
 }
 
+#loading-container {
+    display: none;
+}
+
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    right: 48%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spinner {
+    font-size: 8rem;
+    margin-bottom: .5rem;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 999; /* Lower z-index to cover other content */
+    pointer-events: none; /* Allow clicks to pass through to content below */
+  }
+
+
 
 /* Breakpoints */
 
