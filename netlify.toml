@@ -1,4 +1,4 @@
 [build]
-publish = "/client/src"        # The directory containing your frontend code
+publish = "/"        # The directory containing your frontend code
 functions = "/server"      # The directory containing your server code (optional)
 
