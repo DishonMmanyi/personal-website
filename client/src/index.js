@@ -62,7 +62,7 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
 
   const formData = new FormData(e.target);
 
-  fetch('/send-email', {
+  fetch('https://infinite-eyrie-92765-49948f1de699.herokuapp.com/send-email', {
     method: 'POST',
     body: new URLSearchParams(formData),
     headers: {

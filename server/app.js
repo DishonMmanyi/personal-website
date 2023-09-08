@@ -4,6 +4,8 @@ const app = express(); //making express application
 const port = process.env.PORT || 3000; // port number server will run in
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 // Serve static files from the 'client folder
@@ -12,6 +14,8 @@ app.use(express.static(path.join(__dirname, '../client/src')));
 // Use bodyParser middleware to parse JSON and form data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cors());
 
 //http endpoint to render the index.html file
 app.get('*', (req, res) => {
