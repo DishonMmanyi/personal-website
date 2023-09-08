@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 // Serve static files from the 'client folder
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../client/src')));
 
 // Use bodyParser middleware to parse JSON and form data
 app.use(bodyParser.json());
