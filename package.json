@@ -1,11 +1,11 @@
 {
-  "name": "portfolio_website",
+  "name": "personal_website",
   "version": "1.0.0",
-  "description": "Dishon's portfolio website",
+  "description": "Dishon's personal website",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node server/app.js"
   },
   "keywords": [],
   "author": "Dishon Mmanyi",
