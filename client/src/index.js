@@ -69,7 +69,13 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
   })
-    .then((response) => response.text())
+    .then((response) => {
+    if (!response.ok) {
+      // Handle the error case
+      throw new Error('Email sending failed');
+    }
+    return response.text();
+  })
     .then((data) => {
       loaderIcon.style.display = 'none';
       const successModal = document.getElementById('successModal');
@@ -77,6 +83,9 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
       contactForm.reset();
     })
     .catch((error) => {
+      loaderIcon.style.display = 'none';
+      const failureModal = document.getElementById('failureModal');
+      failureModal.style.display = 'block';
       console.error('Error:', error);
     })
     .finally(() => {
@@ -90,6 +99,14 @@ const closeSuccessModalBtn = document.getElementById('closeSuccessModal');
 
 closeSuccessModalBtn.addEventListener('click', () => {
   const successModal = document.getElementById('successModal');
-  successModal.style.display = 'none';
+    successModal.style.display = 'none';
+  
 });
 
+const closeFailureModalBtn = document.getElementById('closeFailureModal');
+
+closeFailureModalBtn.addEventListener('click', () => {
+  const failureModal = document.getElementById('failureModal');
+  failureModal.style.display = 'none';
+  
+});
